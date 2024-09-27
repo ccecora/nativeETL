@@ -1,5 +1,7 @@
 import argparse
 
+from helpers import existing_configs
+
 from commands import (
     validate_config,
     run_pipeline,
@@ -25,8 +27,8 @@ def main():
     parser_schedule = subparsers.add_parser('schedule', help='Initialize the scheduler on this machine to run any pipelines with \
                                        configured schedules.  Pipelines configs without a schedule or tagged as an exclusion \
                                        will not be scheduled to run can only be executed with the nativeETL run command.')
-     parser_generate.add_argument('--safe', '-s', required=False, default=True, help="If True, will ensure the project is safe \
-                                  before the scheduler is initialized and every existing config wil be validated.")
+    parser_generate.add_argument('--safe', '-s', required=False, default=True, help="If True, will ensure the project is 'safe' \
+                                  before the scheduler is initialized by validating every existing config.")
 
     args = parser.parse_args()
 
@@ -40,9 +42,9 @@ def main():
     elif args.command == 'schedule':
         
         if args.safe:
-            for existing_configs in config_path:
+            for config in existing_configs():
                 validate_config(config)
-
         initialize_scheduler()
+
     else:
         parser.print_help()
