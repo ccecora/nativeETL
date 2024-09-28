@@ -40,11 +40,17 @@ def main():
     elif args.command == 'generate':
         generate_config(args.config)
     elif args.command == 'schedule':
-        
-        if args.safe:
-            for config in existing_configs():
-                validate_config(config)
+        # TODO: implement --safe if the schedule command becomes usable
+        #
+        # Would be something like the following:
+        #
+        # if args.safe:
+        #    for config in existing_configs():
+        #    validate_config(config)
         initialize_scheduler()
 
     else:
         parser.print_help()
+        
+if __name__ == "__main__":
+    main()
