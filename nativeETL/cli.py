@@ -1,8 +1,8 @@
 import argparse
 
-from helpers import existing_configs
+#from helpers import existing_configs
 
-from commands import (
+from .commands import (
     validate_config,
     run_pipeline,
     generate_config,
@@ -46,7 +46,7 @@ def main():
         #
         # if args.safe:
         #    for config in existing_configs():
-        #    validate_config(config)
+        #       validate_config(config)
         initialize_scheduler()
 
     else:

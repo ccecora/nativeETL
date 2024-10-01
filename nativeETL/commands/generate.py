@@ -2,13 +2,13 @@ import yaml
 from pathlib import Path
 
 example_config = {
-    "pipeline" : ""
-    "version": 1.0
-    "fields": {}
+    "pipeline" : "",
+    "version": 1.0,
+    "fields": {},
 }
 
 def generate_config(config_path: str):
-    if not config_path.endswith(".yml")
+    if not config_path.endswith(".yml"):
         raise OSError("Config file specified is not of type yml. \
                        Please specify a yml file when generating a config")
 
