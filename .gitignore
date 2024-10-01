@@ -116,3 +116,6 @@ dmypy.json
 *.sublime-workspace
 *.sublime-project
 *.vscode/
+
+# Project-specific
+*.pipeline_configs/

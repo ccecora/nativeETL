@@ -1,21 +1,27 @@
 import yaml
 from pathlib import Path
+import logging
 
-example_config = {
-    "pipeline" : "",
-    "version": 1.0,
-    "fields": {},
-}
+CONFIG_HOME = Path("nativeETL/pipeline_configs")
+
 
 def generate_config(config_path: str):
+    example_config = {
+        "pipeline" : "",
+        "version": 1.0,
+        "fields": {},
+    }
+
     if not config_path.endswith(".yml"):
-        raise OSError("Config file specified is not of type yml. \
-                       Please specify a yml file when generating a config")
+        raise Exception("Config file specified is not of type yml. \
+                        Please specify a yml file when generating a config")
+    elif "/" in config_path:
+        raise Exception(f"No subdirectories accepted in config_path, \
+                        all configs written to CONFIG_HOME: {CONFIG_HOME}")
 
-    config_path = Path(config_path).resolve()
+    dest_path = CONFIG_HOME/Path(config_path)
 
-    config_home = Path("nativeETL/pipeline_configs").parent()
-    
-    if config_path.parent() == config_home:
-        example_config = yaml.dump(data, default_flow_style=False, sort_keys=False)
-        config_path.write_text(example_config)
+    if not dest_path.exists():
+        dest_path.write_text(yaml.dump(example_config, default_flow_style=False, sort_keys=False))
+    else:
+        raise Exception(f"File already exists at {dest_path}, config not generated")
