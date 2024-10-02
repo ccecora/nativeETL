@@ -1,0 +1,32 @@
+pipeline: 'crisp_orders'
+version: 1.0
+fields: [
+  {
+    "tgt_field": "OrderID",
+    "src_field": "Order Number"
+  },
+  {
+    "tgt_field": "ProductID",
+    "src_field": "Product Number"
+  },
+  {
+    "tgt_field": "ProductName",
+    "src_field": "Product Name"
+  },
+  {
+    "tgt_field": "Quantity",
+    "src_field": "Count"
+  },
+  {
+    "tgt_field": "OrderID",
+    "src_field": "Order Number"
+  },
+  {
+    "tgt_field": "OrderID",
+    "src_field": "Order Number"
+  },
+  {
+    "tgt_field": "Unit"
+    "fixed_val": "kg"
+  }
+]

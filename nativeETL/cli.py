@@ -40,10 +40,7 @@ def main():
     elif args.command == 'generate':
         generate_config(args.config)
     elif args.command == 'schedule':
-        # TODO: implement --safe if the schedule command becomes usable
-        #
-        # Would be something like the following:
-        #
+        # TODO: --safe option for schedule:
         # if args.safe:
         #    for config in existing_configs():
         #       validate_config(config)
