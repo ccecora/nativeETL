@@ -19,6 +19,7 @@ def main():
 
     parser_run = subparsers.add_parser('run', help='Run the pipeline based on the configuration file, irregardles of schedule.')
     parser_run.add_argument('--config', '-c', required=True, help="Path to the configuration file.")
+    parser_run.add_argument('--data', '-d', required=True, help="Path to the data file to extract.")
 
     parser_generate = subparsers.add_parser('generate', help='Creates a dummy pipeline configuration file for the user.')
     parser_generate.add_argument('--config', '-c', required=True, help="Path to the configuration file.")
@@ -36,7 +37,7 @@ def main():
         validate_config(args.config)
     elif args.command == 'run':
         validate_config(args.config)
-        run_pipeline(args.config)
+        run_pipeline(args.config, args.data)
     elif args.command == 'generate':
         generate_config(args.config)
     elif args.command == 'schedule':

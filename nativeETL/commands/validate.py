@@ -1,2 +1,2 @@
-def validate_config():
+def validate_config(config):
     pass
